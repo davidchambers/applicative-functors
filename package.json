@@ -1,0 +1,12 @@
+{
+  "name": "applicative-functors",
+  "private": true,
+  "dependencies": {
+    "ramda": "0.21.x"
+  },
+  "devDependencies": {
+    "eslint": "2.11.x",
+    "mocha": "2.5.x",
+    "sanctuary-style": "0.1.x"
+  }
+}
