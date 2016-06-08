@@ -18,7 +18,12 @@ const Identity = function Identity(x) {
     map: f => Identity(f(x)),
 
     // ap :: Identity (a -> b) ~> Identity a -> Identity b
-    ap: identity => TK,
+    //
+    // Note that it's possible to implement "ap" in terms of "map":
+    //
+    //   identity => identity.map(x)
+    //
+    ap: identity => Identity(x(identity.value)),
   };
 };
 

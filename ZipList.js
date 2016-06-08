@@ -17,7 +17,16 @@ const ZipList = function ZipList(list) {
     map: f => ZipList(list.map(f)),
 
     // ap :: ZipList (a -> b) ~> ZipList a -> ZipList b
-    ap: zipList => TK,
+    ap: zipList => {
+      const list2 = zipList.value;
+      if (list.isCons && list2.isCons) {
+        const head = list.head(list2.head);
+        const tail = ZipList(list.tail).ap(ZipList(list2.tail)).value;
+        return ZipList(List.Cons(head, tail));
+      } else {
+        return ZipList(List.Nil);
+      }
+    },
   };
 };
 

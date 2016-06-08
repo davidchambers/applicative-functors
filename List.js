@@ -4,9 +4,9 @@ const R = require('ramda');
 
 //    concat :: List a -> List a -> List a
 const concat = R.curry(function concat(list1, list2) {
-  return list1.isNil ? TK :
-         list2.isNil ? TK :
-       /* otherwise */ TK;
+  return list1.isNil ? list2 :
+         list2.isNil ? list1 :
+       /* otherwise */ Cons(list1.head, concat(list1.tail, list2));
 });
 
 // Nil :: List a
@@ -24,7 +24,7 @@ const Nil = {
   map: f => Nil,
 
   // ap :: List (a -> b) ~> List a -> List b
-  ap: list => TK,
+  ap: list => Nil,
 };
 
 // Cons :: (a, List a) -> List a
@@ -47,7 +47,7 @@ const Cons = function Cons(head, tail) {
     map: f => Cons(f(head), tail.map(f)),
 
     // ap :: List (a -> b) ~> List a -> List b
-    ap: list => TK,
+    ap: list => concat(list.map(head), tail.ap(list)),
   };
 };
 

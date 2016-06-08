@@ -17,7 +17,7 @@ const Nothing = {
   map: f => Nothing,
 
   // ap :: Maybe (a -> b) ~> Maybe a -> Maybe b
-  ap: maybe => TK,
+  ap: maybe => Nothing,
 };
 
 // Just :: a -> Maybe a
@@ -37,7 +37,7 @@ const Just = function Just(x) {
     map: f => Just(f(x)),
 
     // ap :: Maybe (a -> b) ~> Maybe a -> Maybe b
-    ap: maybe => TK,
+    ap: maybe => maybe.isJust ? Just(x(maybe.value)) : Nothing,
   };
 };
 
