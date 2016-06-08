@@ -15,7 +15,7 @@ const Identity = function Identity(x) {
     equals: R.propEq('value', x),
 
     // map :: Identity a ~> (a -> b) -> Identity b
-    map: f => TK,
+    map: f => Identity(f(x)),
 
     // ap :: Identity (a -> b) ~> Identity a -> Identity b
     ap: identity => TK,

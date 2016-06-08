@@ -21,7 +21,7 @@ const Nil = {
   equals: list => list.isNil,
 
   // map :: List a ~> (a -> b) -> List b
-  map: f => TK,
+  map: f => Nil,
 
   // ap :: List (a -> b) ~> List a -> List b
   ap: list => TK,
@@ -44,7 +44,7 @@ const Cons = function Cons(head, tail) {
                     R.equals(list.tail, tail),
 
     // map :: List a ~> (a -> b) -> List b
-    map: f => TK,
+    map: f => Cons(f(head), tail.map(f)),
 
     // ap :: List (a -> b) ~> List a -> List b
     ap: list => TK,

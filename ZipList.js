@@ -14,7 +14,7 @@ const ZipList = function ZipList(list) {
     equals: zipList => R.equals(zipList.value, list),
 
     // map :: ZipList a ~> (a -> b) -> ZipList b
-    map: f => TK,
+    map: f => ZipList(list.map(f)),
 
     // ap :: ZipList (a -> b) ~> ZipList a -> ZipList b
     ap: zipList => TK,

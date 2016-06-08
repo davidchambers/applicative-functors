@@ -14,7 +14,7 @@ const Nothing = {
   equals: maybe => maybe.isNothing,
 
   // map :: Maybe a ~> (a -> b) -> Maybe b
-  map: f => TK,
+  map: f => Nothing,
 
   // ap :: Maybe (a -> b) ~> Maybe a -> Maybe b
   ap: maybe => TK,
@@ -34,7 +34,7 @@ const Just = function Just(x) {
     equals: maybe => maybe.isJust && R.equals(maybe.value, x),
 
     // map :: Maybe a ~> (a -> b) -> Maybe b
-    map: f => TK,
+    map: f => Just(f(x)),
 
     // ap :: Maybe (a -> b) ~> Maybe a -> Maybe b
     ap: maybe => TK,
